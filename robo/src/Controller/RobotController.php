@@ -27,6 +27,9 @@ class RobotController implements ChargeBatteryInterface, CleanFloorInterface
         }
     }
 
+	/*
+	* Implementation of charging battery.
+	*/
     public function chargeBattery()
     {
         if (0 == $this->battery) {
@@ -39,6 +42,9 @@ class RobotController implements ChargeBatteryInterface, CleanFloorInterface
         }
     }
 
+	/*
+	* Implementation of cleaning hard apartment.
+	*/
     public function hardClean($area)
     {
         $this->output->writeln('Started cleaning HARD floor....!');
@@ -47,6 +53,9 @@ class RobotController implements ChargeBatteryInterface, CleanFloorInterface
         $this->cleanFloor($remainingArea);
     }
 
+	/*
+	* Implementation of cleaning carpet apartment
+	*/
     public function carpetClean($area)
     {
         $this->output->writeln('Started cleaning CARPET floor....!');
@@ -55,6 +64,9 @@ class RobotController implements ChargeBatteryInterface, CleanFloorInterface
         $this->cleanFloor($remainingArea);
     }
 
+	/*
+	* Common code for clean apartment.
+	*/
     private function cleanFloor($remainingArea)
     {
         if ($remainingArea > 0) {
@@ -67,6 +79,12 @@ class RobotController implements ChargeBatteryInterface, CleanFloorInterface
         $this->output->writeln('Cleaning completed....!');
     }
 
+	/*
+	* Input validation.
+	* input: $floorType
+	* input: $area
+	* output: bool $isValidate
+	*/
     private function validateInput($floorType, $area)
     {
         $isValidate = true;
